@@ -7,6 +7,7 @@ import org.junit.Test;
 import tss.TSS;
 
 import static model.EquationHelper.mult;
+import static model.EquationHelper.toCleanString;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -59,11 +60,26 @@ public class TSSTest {
     @Test
     public void shouldReturnBasisFromSystemTest2() {
         List<Equation> system = new ArrayList<>();
-        system.add(new Equation("-3 -4 5 -6 -2"));
-        system.add(new Equation("2 3 -2 1 1"));
-        system.add(new Equation("1 -1 -1 2 -1"));
+        system.add(new Equation("-3 -4 5 -6 -1 0 0"));
+        system.add(new Equation("2 3 -2 1 0 -1 0"));
+        system.add(new Equation("1 -1 -1 2 0 0 -1"));
 
-        System.out.println(TSS.getBasisForSystem(system));
+        System.out.println(toCleanString(TSS.getBasisForSystem(system)));
+    }
+
+    @Test
+    public void shouldReturnBasisFromSystemTest3() {
+        List<Equation> system = new ArrayList<>();
+
+        system.add(new Equation("1 0 -1 0 0 0 1 0 0 0 0 0 0"));
+        system.add(new Equation("-1 1 0 0 0 0 0 1 0 0 0 0 0"));
+        system.add(new Equation("0 -1 1 0 0 0 0 0 1 0 0 0 0"));
+        system.add(new Equation("0 3 -3 -1 1 0 0 0 1 0 0 0"));
+        system.add(new Equation("0 0 0 1 -1 0 0 0 0 0 1 0 0"));
+        system.add(new Equation("0 0 0 0 1 -1 0 0 0 0 0 1 0"));
+        system.add(new Equation("0 0 0 -1 0 1 0 0 0 0 0 0 1"));
+
+        System.out.println(toCleanString(TSS.getBasisForSystem(system)));
     }
 
 
